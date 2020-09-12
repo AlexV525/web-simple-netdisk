@@ -1,0 +1,188 @@
+@charset "utf-8";
+/*
+ * Author: Alex Vincent
+ * Created: 2018-11-22
+*/
+
+body, input, textarea, select, option, button,
+h1, h2, h3, h4, h5, h6,
+.popover {
+    outline: none !important;
+    font-family: -apple-system, "PingFang SC", "PingFang SC Medium", "Microsoft Yahei UI", sans-serif, Arial !important;
+}
+a, span, input, textarea, tr, th, td, ul, li, ol {
+    transition: background, border, color 0.2s ease;
+}
+button, *[type=button] {
+    transition: 0.1s ease !important;
+}
+textarea {
+    resize: vertical;
+}
+ul {
+    list-style-type: disc;
+}
+.bs-bars {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+.btn-file-toolbar-primary {
+    background-color: #3c8dbc;
+    color: #fff;
+}
+.btn-file-toolbar-primary:focus,
+.btn-file-toolbar-primary:hover,
+.btn-file-toolbar-primary:active {
+    background-color: #3dabda;
+    color: #fff;
+}
+.btn-file-toolbar-secondary {
+    background-color: #fff;
+    border-color: #3c8dbc;
+    color: #3c8dbc;
+}
+.btn-file-toolbar-secondary:focus,
+.btn-file-toolbar-secondary:hover,
+.btn-file-toolbar-secondary:active {
+    color: #3dabda;
+}
+.btn-for-file {
+    margin: 0 0.25em;
+    width: 1.414em;
+    height: 1.414em;
+    background-color: transparent;
+    color: #3c8dbc;
+    font-size: 1.125em;
+    text-align: center;
+}
+.btn-simulate-upload {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    width: 60%;
+    background-color: #3c8dbc;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+.breadcrumb {
+    margin-top: 10px;
+    padding: 0 15px;
+}
+.breadcrumb>li {
+    float: left;
+}
+.breadcrumb .path-previous {
+    display: none !important;
+    cursor: pointer;
+    padding-right: 3px;
+}
+.breadcrumb .path-previous.active {
+    display: inline-block !important;
+}
+.breadcrumb .node > a {
+    position: relative;
+    color: #333;
+    cursor: pointer;
+    transition: color 350ms ease;
+}
+.breadcrumb .node > a:hover,
+.breadcrumb .node > a:focus,
+.breadcrumb .node > a:active {
+    color: #3c8dbc;
+    font-weight: bolder;
+}
+.breadcrumb .node > a:hover:after,
+.breadcrumb .node > a:visited:hover:after {
+    left: 0;
+    width: 100%;
+    -webkit-transition: width 350ms;
+    -moz-transition: width 350ms;
+    transition: width 350ms;
+}
+.breadcrumb .node > a:after,
+.breadcrumb .node > a:visited:after {
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid #3c8dbc;
+    bottom: -2px;
+    left: 100%;
+    width: 0;
+    -webkit-transition: width 350ms, left 350ms;
+    -moz-transition: width 350ms, left 350ms;
+    transition: width 350ms, left 350ms;
+}
+
+.text-small {
+    font-size: 0.875em;
+}
+.file-column {
+    color: #000;
+    cursor: pointer;
+    text-decoration: none;
+}
+.file-column:focus,
+.file-column:hover,
+.file-column:active {
+    text-decoration: underline;
+}
+.file-action {
+    display: inline-block;
+}
+.file-type {
+    display: inline-block;
+    margin-right: 0.75em;
+    width: 1.25em;
+    height: 1.25em;
+    vertical-align: middle;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/icons.png);
+}
+.folder .file-type {
+    background-position-x: calc(-1.25*1em);
+}
+.pdf .file-type {
+    background-position-x: calc(-1.25*2em);
+}
+.image .file-type {
+    background-position-x: calc(-1.25*3em);
+}
+.audio .file-type {
+    background-position-x: calc(-1.25*4em);
+}
+.video .file-type {
+    background-position-x: calc(-1.25*5em);
+}
+.alert.on-top {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 0;
+    min-width: 150px;
+    z-index: 1050;
+    transition: 0.2s ease;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+}
+.alert.on-top.display {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.preview-el {
+    display: none;
+    width: 100%;
+}
+.preview-el.display {
+    display: block;
+}
+.preview-el.preview-pdf {
+    height: 30em;
+}

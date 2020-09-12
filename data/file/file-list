@@ -1,0 +1,129 @@
+{
+    "status": "success",
+    "data": {
+        "max_file_id": 12,
+        "lists": [
+            {
+                "file_id": 1,
+                "file_name": "测试文件夹",
+                "file_size": null,
+                "file_last_modified": "2018-11-22 17:24",
+                "file_type": "folder",
+                "file_path": "/测试文件夹",
+                "is_folder": true,
+                "is_empty": false,
+                "content_inside": [
+                    {
+                        "file_id": 6,
+                        "file_name": "次级文件夹1",
+                        "file_size": null,
+                        "file_last_modified": "2018-11-26 17:24",
+                        "file_type": "folder",
+                        "file_path": "/测试文件夹/次级文件夹1",
+                        "is_folder": true,
+                        "is_empty": false,
+                        "content_inside": [
+                            {
+                                "file_id": 8,
+                                "file_name": "次级文件2.jpg",
+                                "file_size": 5714,
+                                "file_last_modified": "2018-11-26 17:24",
+                                "file_type": "image",
+                                "file_path": "/测试文件夹/次级文件夹1/次级文件2.jpg",
+                                "is_folder": false,
+                                "is_empty": null
+                            }
+                        ]
+                    },
+                    {
+                        "file_id": 11,
+                        "file_name": "次级文件5.jpg",
+                        "file_size": 5714,
+                        "file_last_modified": "2018-11-26 17:24",
+                        "file_type": "image",
+                        "file_path": "/测试文件夹/次级文件5.jpg",
+                        "is_folder": false,
+                        "is_empty": null
+                    }
+                ]
+            },
+            {
+                "file_id": 7,
+                "file_name": "测试文件夹2",
+                "file_size": null,
+                "file_last_modified": "2018-11-22 17:24",
+                "file_type": "folder",
+                "file_path": "/测试文件夹2",
+                "is_folder": true,
+                "is_empty": false,
+                "content_inside": [
+                    {
+                        "file_id": 9,
+                        "file_name": "次级文件3.jpg",
+                        "file_size": 5714,
+                        "file_last_modified": "2018-11-26 17:24",
+                        "file_type": "image",
+                        "file_path": "/测试文件夹2/次级文件3.jpg",
+                        "is_folder": false,
+                        "is_empty": null
+                    },
+                    {
+                        "file_id": 10,
+                        "file_name": "次级文件4.m4a",
+                        "file_size": 4917821,
+                        "file_last_modified": "2018-11-26 17:24",
+                        "file_type": "audio",
+                        "file_path": "/测试文件夹2/次级文件4.m4a",
+                        "is_folder": false,
+                        "is_empty": null
+                    }
+                ]
+            },
+            {
+                "file_id": 2,
+                "file_name": "测试图片.jpg",
+                "file_size": 5714,
+                "file_last_modified": "2018-11-26 17:24",
+                "file_type": "image",
+                "file_path": "/测试图片.jpg",
+                "is_folder": false
+            },
+            {
+                "file_id": 3,
+                "file_name": "测试音频.m4a",
+                "file_size": 4917821,
+                "file_last_modified": "2018-11-25 17:24",
+                "file_type": "audio",
+                "file_path": "/测试音频.m4a",
+                "is_folder": false
+            },
+            {
+                "file_id": 4,
+                "file_name": "测试未知类型文件",
+                "file_size": 1,
+                "file_last_modified": "2018-11-24 17:24",
+                "file_type": "unknown",
+                "file_path": "/测试未知类型文件",
+                "is_folder": false
+            },
+            {
+                "file_id": 5,
+                "file_name": "测试PDF.pdf",
+                "file_size": 82639,
+                "file_last_modified": "2018-11-23 17:24",
+                "file_type": "pdf",
+                "file_path": "/测试PDF.pdf",
+                "is_folder": false
+            },
+            {
+                "file_id": 12,
+                "file_name": "测试视频.mp4",
+                "file_size": 5421138,
+                "file_last_modified": "2018-11-23 17:24",
+                "file_type": "video",
+                "file_path": "/测试视频.mp4",
+                "is_folder": false
+            }
+        ]
+    }
+}

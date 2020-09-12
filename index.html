@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>网盘</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="author" content="av@alexv525.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#367fa9">
+    <meta name="msapplication-TileImage" content="/favicon.ico">
+    <link rel="bookmark" href="favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon.ico" sizes="192x192">
+    <link rel="icon" href="/favicon.ico" sizes="256x256">
+    <link rel="apple-touch-icon-precomposed" href="/favicon.ico">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/pace/themes/white/pace-theme-flat-top.css">
+    <link rel="stylesheet" href="vendor/bootstrap-table/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-fileinput/css/fileinput.min.css">
+    <link rel="stylesheet" href="vendor/sweetalert/src/sweetalert.css">
+    <link rel="stylesheet" href="css/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="./" class="logo">
+                <span class="logo-mini"><b>N</b>D</span>
+                <span class="logo-lg"><b>Net</b> Disk</span>
+            </a>
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="hidden-xs">Alex Vincent</span>
+                                <img src="images/0019f103.jpg" class="user-image" alt="User Image">
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="user-header">
+                                    <img src="images/0019f103.jpg" class="img-circle" alt="User Image">
+                                    <p>Alex Vincent</p>
+                                </li>
+                                <li class="user-footer">
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">注销</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">导航</li>
+                    <li class="active">
+                        <a href="./">
+                            <i class="fa fa-files-o"></i>
+                            <span>全部文件</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    全部文件 <small>// 文件列表</small>
+                </h1>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><i class="fa fa-bullhorn"></i> 说明</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <p>
+                                    网盘完成功能：
+                                    <ul>
+                                        <li>数据具有层级结构，能够进入/返回/新建/删除文件夹</li>
+                                        <li>批量上传/删除文件（此处做单文件上传模拟）</li>
+                                        <li>预览文件（图片/视频/PDF）</li>
+                                        <li>数据存储在 <code>localStorage</code>，系列前缀 <code>nd_</code></li>
+                                        <li>面包屑返回任意上级文件夹</li>
+                                        <li>下载（指向资源路径）</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="box box-primary">
+                            <div class="box-body">
+                                <div id="fileTable-toolbar" class="bs-table-toolbar">
+                                    <button class="btn btn-file-toolbar-primary" name="upload" aria-label="upload" title="上传文件" data-toggle="modal" data-target="#uploadModal">
+                                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> 上传文件
+                                    </button>
+                                    <button class="btn btn-file-toolbar-secondary" name="add-folder" aria-label="add-folder" title="新建文件夹" data-toggle="modal" data-target="#addFolderModal">
+                                        <i class="fa fa-folder" aria-hidden="true"></i> 新建文件夹
+                                    </button>
+                                    <button class="btn btn-file-toolbar-secondary hidden" name="delete" aria-label="delete" title="删除">
+                                        <i class="fa fa-trash" aria-hidden="true"></i> 删除
+                                    </button>
+                                    <button class="btn btn-file-toolbar-primary pull-right" name="refresh" aria-label="refresh" title="刷新">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </button>
+                                    <ol class="breadcrumb center-block clearfix" style="margin-bottom:0;">
+                                        <li class="path-previous">
+                                            <a><i class="fa fa-level-up"></i></a>
+                                        </li>
+                                        <li class="node root" data-file-id="0" data-parent-id="-1">
+                                            <a><i class="fa fa-folder-open"></i></a>
+                                        </li>
+                                    </ol>
+                                </div>
+                                <table id="fileTable"
+                                       data-cache="false"
+                                       data-classes="table table-no-bordered table-hover no-border"
+                                       data-data-tyle="json"
+                                       data-toolbar="#fileTable-toolbar"
+                                       data-toolbar-align="center"
+                                       data-unique-id="file_id"
+                                >
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer class="main-footer text-left">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 0.0.1
+            </div>
+            <strong>NetDisk by <a href="https://blog.alexv525.com/">Alex Vincent</a></strong>.
+        </footer>
+    </div>
+    <div class="modal fade" id="previewModal" tabindex="-1" data-keyboard="true" aria-labelledby="previewModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title text-center" id="previewModal-title">预览文件</h4>
+                </div>
+                <div class="modal-body" id="previewModal-body">
+                    <img src="" id="preview-image" class="preview-el preview-image" alt="预览图片">
+                    <audio id="preview-audio" class="preview-el preview-media preview-audio text-center" controls>您的浏览器不支持audio标签</audio>
+                    <video id="preview-video" class="preview-el preview-media preview-video text-center" controls>您的浏览器不支持video标签</video>
+                    <iframe id="preview-pdf" frameborder="0" class="preview-el preview-pdf"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addFolderModal" tabindex="-1" data-keyboard="true" aria-labelledby="addFolderModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title text-center" id="addFolderModal-title">新建文件夹</h4>
+                </div>
+                <div class="modal-body" id="addFolderModal-body">
+                    <label for="new-folder">文件夹名称 (不得包含：\ / : * ? " < > | )</label>
+                    <input id="new-folder" type="text" class="form-control" maxlength="255" placeholder="请输入文件夹名称......">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="new-folder-save" disabled>确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="uploadModal" tabindex="-1" data-keyboard="true" aria-labelledby="uploadModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title text-center" id="uploadModal-title">上传文件</h4>
+                </div>
+                <div class="modal-body" id="uploadModal-body">
+                    <input id="file" type="file" name="file" multiple>
+                    <button type="button" id="simulateUpload" class="btn-simulate-upload">模拟上传该文件<br>(模拟后无法预览)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger alert-dismissible on-top">
+        <button type="button" class="close" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i>错误</h4>
+        <p>这是一个示例错误。</p>
+    </div>
+    <!-- Base requiment -->
+    <script src="vendor/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="vendor/fastclick/lib/fastclick.js"></script>
+    <!-- Sweet Alert -->
+    <script src="vendor/sweetalert/src/sweetalert.min.js"></script>
+    <!-- Bootstrap Table -->
+    <script src="vendor/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="vendor/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- Bootstrap Fileinput -->
+    <script src="vendor/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="vendor/bootstrap-fileinput/js/locales/zh.js"></script>
+    <!-- AdminLTE -->
+    <script src="js/adminlte.min.js"></script>
+    <!-- User Script -->
+    <script src="js/demo.min.js"></script>
+</body>
+</html>
