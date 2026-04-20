@@ -7,7 +7,3 @@ A lightweight, static demo of a web-based netdisk UI.
 ### Main file list
 
 ![Main file list](images/screenshots/netdisk-main.png)
-
-### Upload dialog
-
-![Upload dialog](images/screenshots/netdisk-upload.png)
